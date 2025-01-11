@@ -1,4 +1,4 @@
-# Sigma Taxonomy <!-- omit in toc -->
+# Sigma Taxonomy
 
 The following document defines the field names and log sources that are allowed to be used in SIGMA rules that are shared on the official SigmaHQ repository.
 
@@ -7,21 +7,47 @@ The following document defines the field names and log sources that are allowed 
 
 ## Summary
 
-- [Summary](#summary)
-- [Log Sources](#log-sources)
-  - [Application Folder](#application-folder)
-  - [Category Folder](#category-folder)
-  - [Cloud Folder](#cloud-folder)
-  - [Linux Folder](#linux-folder)
-  - [Macos Folder](#macos-folder)
-  - [Network Folder](#network-folder)
-  - [Other](#other)
-  - [Product Folder](#product-folder)
-  - [Windows Folder](#windows-folder)
-- [Fields](#fields)
-  - [Generic](#generic)
-  - [Specific](#specific)
-- [History](#history)
+* [Summary](#summary)
+* [Log Sources](#log-sources)
+  * [Application Folder](#application-folder)
+    * [Django](#django)
+    * [Python](#python)
+    * [RPC Firewall](#rpc-firewall)
+    * [Ruby on Rails](#ruby-on-rails)
+    * [Spring Framework](#spring-framework)
+    * [SQL](#sql)
+  * [Category Folder](#category-folder)
+  * [Cloud Folder](#cloud-folder)
+    * [AWS](#aws)
+    * [Azure](#azure)
+    * [Bitbucket](#bitbucket)
+    * [Cisco](#cisco)
+    * [GCP](#gcp)
+    * [Github](#github)
+    * [M365](#m365)
+    * [Okta](#okta)
+    * [OneLogin](#onelogin)
+  * [Linux Folder](#linux-folder)
+    * [Category](#category)
+    * [Service](#service)
+  * [Macos Folder](#macos-folder)
+    * [Category](#category-1)
+  * [Network Folder](#network-folder)
+    * [Cisco](#cisco-1)
+    * [Huawei](#huawei)
+    * [Juniper](#juniper)
+    * [Zeek](#zeek)
+  * [Other](#other)
+  * [Product Folder](#product-folder)
+  * [Windows Folder](#windows-folder)
+    * [Category](#category-2)
+    * [Service](#service-1)
+* [Fields](#fields)
+  * [Generic](#generic)
+    * [Process Creation Events](#process-creation-events)
+    * [Other Generic Rule Categories](#other-generic-rule-categories)
+  * [Specific](#specific)
+* [History](#history)
 
 ## Log Sources
 

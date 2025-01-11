@@ -1,16 +1,17 @@
-# SigmaHQ Filename Conventions <!-- omit in toc -->
+# SigmaHQ Filename Conventions
 
 This document describe a soft convention to name rule files. The following convention has been set to help with the management of the rules files repository and is not part of the SIGMA specification.
 
-## Summary <!-- omit in toc -->
+## Summary
 
-- [Product](#product)
-- [Cloud](#cloud)
-- [Category](#category)
-- [Category without product](#category-without-product)
-- [Service](#service)
-  - [Linux](#linux)
-  - [Windows](#windows)
+* [Summary](#summary)
+* [Product](#product)
+* [Cloud](#cloud)
+* [Category](#category)
+* [Category without product](#category-without-product)
+* [Service](#service)
+  * [Linux](#linux)
+  * [Windows](#windows)
 
 ## Product
 
@@ -78,10 +79,10 @@ This document describe a soft convention to name rule files. The following conve
 
 The naming convetion for rules using linux services is the as follows:
 
-- Filename must start with `lnx_`
-- Followed by the service name and underscore at the end `service_`. Example: `auditd_`
-- If the service name contains a dash `-`. For example `bits-client`. Then replace it with an underscore `bits_client_`
-- Filename must end with a `.yml` extension
+* Filename must start with `lnx_`
+* Followed by the service name and underscore at the end `service_`. Example: `auditd_`
+* If the service name contains a dash `-`. For example `bits-client`. Then replace it with an underscore `bits_client_`
+* Filename must end with a `.yml` extension
 
 | Service                               | Pattern                       | example                                           |
 | ------------------------------------- | ----------------------------- | ------------------------------------------------- |
@@ -99,10 +100,10 @@ The naming convetion for rules using linux services is the as follows:
 
 The naming convention for rules using windows services is the as follows:
 
-- Filename must start with `win_`
-- Followed by the service name and underscore at the end `service_`. Example: `applocker_`
-- If the service name contains a dash `-`. For example `bits-client`. Then replace it with an underscore `bits_client_`
-- Filename must end with a `.yml` extension
+* Filename must start with `win_`
+* Followed by the service name and underscore at the end `service_`. Example: `applocker_`
+* If the service name contains a dash `-`. For example `bits-client`. Then replace it with an underscore `bits_client_`
+* Filename must end with a `.yml` extension
 
 | Service                               | Pattern                       | example                                                 |
 | ------------------------------------- | ----------------------------- | ------------------------------------------------------- |

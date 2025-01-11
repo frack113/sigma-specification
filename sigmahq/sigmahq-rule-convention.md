@@ -1,22 +1,23 @@
-# SigmaHQ Rule Conventions <!-- omit in toc -->
+# SigmaHQ Rule Conventions
 
-This document describes an additional set of rule conventions enforced by the SigmaHQ rule repository in order to ensure an easy to maintain rule base. 
+This document describes an additional set of rule conventions enforced by the SigmaHQ rule repository in order to ensure an easy to maintain rule base.
 
 For the general Sigma rule specification please read see [this](/specification/sigma_rules.md)
 
 ## Summary
 
-- [Summary](#summary)
-- [Structure](#structure)
-- [Filenames](#filenames)
-- [Indentation](#indentation)
-- [Titles](#titles)
-- [Status](#status)
-- [Description](#description)
-- [References](#references)
-- [Detection](#detection)
-  - [Item Lists](#item-lists)
-- [False Positives](#false-positives)
+* [Summary](#summary)
+* [Structure](#structure)
+* [Filenames](#filenames)
+* [Indentation](#indentation)
+* [Titles](#titles)
+* [Status](#status)
+* [Description](#description)
+* [References](#references)
+* [Detection](#detection)
+  * [Item Lists](#item-lists)
+  * [Condition](#condition)
+* [False Positives](#false-positives)
 
 ## Structure
 
@@ -77,20 +78,20 @@ All newly created rules must start with a status of `experimental`
 
 ## Description
 
-- All rule descriptions must explain what the rule detects. A best practice therefore is to start with the word `Detects`
-- If a description text is too long or it's expressing multiple ideas. It's advised to use the pipe symbol `|` to signify a multiline string. Example:
+* All rule descriptions must explain what the rule detects. A best practice therefore is to start with the word `Detects`
+* If a description text is too long or it's expressing multiple ideas. It's advised to use the pipe symbol `|` to signify a multiline string. Example:
 
 ```yml
 description: |
     Detects password dumper activity by monitoring remote thread creation EventID 8 in combination with the lsass.exe process as TargetImage.
     The process in field Process is the malicious program. A single execution can lead to hundreds of events.
-``` 
+```
 
 ## References
 
-- All rules must provide a public reference, if possible.
-- References to the MITRE ATT&CK website are not allowed. Instead they should be expressed as tags using the appropriate MITRE tags.
-- References to git-based platforms such as Github or Gitlab must be provided as permalinks instead of main or master branch links. This is to avoid any future confusion in the intended reference in case the maintainers of said branches introduce new changes.
+* All rules must provide a public reference, if possible.
+* References to the MITRE ATT&CK website are not allowed. Instead they should be expressed as tags using the appropriate MITRE tags.
+* References to git-based platforms such as Github or Gitlab must be provided as permalinks instead of main or master branch links. This is to avoid any future confusion in the intended reference in case the maintainers of said branches introduce new changes.
 
 ## Detection
 
@@ -119,14 +120,14 @@ detection:
 
 ### Condition
 
-- When possible, it is recommended to use conditions in the form `1 of selection_*` or `1 of selection_*` in order to make them more readable.
-- When filtering values in the condition, it's recommended to name the filters in one of two ways:
-    - `filter_main_*`: For filters that are mandatory to the rule's logic, or if the excluded behavior or software is present by default or very common.
-    - `filter_optional_*`: For filters that are based on behaviors or software that aren't part of the default installation of the OS or service being targeted.
+* When possible, it is recommended to use conditions in the form `1 of selection_*` or `1 of selection_*` in order to make them more readable.
+* When filtering values in the condition, it's recommended to name the filters in one of two ways:
+  * `filter_main_*`: For filters that are mandatory to the rule's logic, or if the excluded behavior or software is present by default or very common.
+  * `filter_optional_*`: For filters that are based on behaviors or software that aren't part of the default installation of the OS or service being targeted.
 
 ## False Positives
 
-- If the rule author expects false positives (found during testing or via external references), then it must be expressed as clear as possible. For example:
+* If the rule author expects false positives (found during testing or via external references), then it must be expressed as clear as possible. For example:
 
 ```yml
 falsepositives:
@@ -134,9 +135,9 @@ falsepositives:
     - Administrators or administrator scripts might sometimes generate similar activity
 ```
 
-- In cases where the author doesn't know of any false positives then value the should be `Unknown`.
-- If the rule author doesn't expect false positives the value should be `Unlikely`.
+* In cases where the author doesn't know of any false positives then value the should be `Unknown`.
+* If the rule author doesn't expect false positives the value should be `Unlikely`.
 
 Also please note the following
 
-- Keywords such as `None`, `Pentest`, `Penetration Test`, `Red Team`, Etc, are not accepted as valid values.
+* Keywords such as `None`, `Pentest`, `Penetration Test`, `Red Team`, Etc, are not accepted as valid values.

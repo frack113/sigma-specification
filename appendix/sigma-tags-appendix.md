@@ -1,4 +1,4 @@
-# Sigma Tags <!-- omit in toc -->
+# Sigma Tags
 
 The following document defines the standardized tags that can be used to categorize the different Sigma rules.
 
@@ -7,16 +7,16 @@ The following document defines the standardized tags that can be used to categor
 
 ## Summary
 
-- [Summary](#summary)
-- [Namespaces](#namespaces)
-  - [Namespace: attack](#namespace-attack)
-  - [Namespace: car](#namespace-car)
-  - [Namespace: cve](#namespace-cve)
-  - [Namespace: d3fend](#namespace-d3fend)
-  - [Namespace: detection](#namespace-detection)
-  - [Namespace: stp](#namespace-stp)
-  - [Namespace: tlp](#namespace-tlp)
-- [History](#history)
+* [Summary](#summary)
+* [Namespaces](#namespaces)
+  * [Namespace: attack](#namespace-attack)
+  * [Namespace: car](#namespace-car)
+  * [Namespace: cve](#namespace-cve)
+  * [Namespace: d3fend](#namespace-d3fend)
+  * [Namespace: detection](#namespace-detection)
+  * [Namespace: stp](#namespace-stp)
+  * [Namespace: tlp](#namespace-tlp)
+* [History](#history)
 
 ## Namespaces
 

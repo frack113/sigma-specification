@@ -5,44 +5,44 @@ The following document defines the standardized correlation that can be used in 
 * Version 2.0.2
 * Release date 2024-11-01
 
-- [Introduction](#introduction)
-  - [Compatibility](#compatibility)
-  - [Expression of Relationships In The Condition of Sigma Rules](#expression-of-relationships-in-the-condition-of-sigma-rules)
-  - [Type of Correlation rules](#type-of-correlation-rules)
-- [Correlation rules](#correlation-rules)
-  - [File Structure](#file-structure)
-    - [YAML File](#yaml-file)
-    - [Schema](#schema)
-    - [Syntax](#syntax)
-  - [Components](#components)
-    - [Title](#title)
-    - [Identification](#identification)
-    - [Status](#status)
-    - [Description](#description)
-    - [Author](#author)
-    - [References](#references)
-    - [Date](#date)
-    - [Modified](#modified)
-    - [Correlation section](#correlation-section)
-      - [Correlation type](#correlation-type)
-      - [Related rules](#related-rules)
-      - [Aliases](#aliases)
-      - [Grouping](#grouping)
-      - [Time Selection](#time-selection)
-      - [Condition](#condition)
-    - [FalsePositives](#falsepositives)
-    - [Level](#level)
-    - [Generate](#generate)
-  - [Correlation Types](#correlation-types)
-    - [Event Count (event\_count)](#event-count-event_count)
-    - [Value Count (value\_count)](#value-count-value_count)
-    - [Temporal Proximity (temporal)](#temporal-proximity-temporal)
-    - [Ordered Temporal Proximity (temporal\_ordered)](#ordered-temporal-proximity-temporal_ordered)
-  - [Field Name Aliases](#field-name-aliases)
-    - [Field Name Aliases Example](#field-name-aliases-example)
-- [Examples](#examples)
-  - [Failed Logins Followed by Successful Login](#failed-logins-followed-by-successful-login)
-- [History](#history)
+* [Introduction](#introduction)
+  * [Compatibility](#compatibility)
+  * [Expression of Relationships In The Condition of Sigma Rules](#expression-of-relationships-in-the-condition-of-sigma-rules)
+  * [Type of Correlation rules](#type-of-correlation-rules)
+* [Correlation rules](#correlation-rules)
+  * [File Structure](#file-structure)
+    * [YAML File](#yaml-file)
+    * [Schema](#schema)
+    * [Syntax](#syntax)
+  * [Components](#components)
+    * [Title](#title)
+    * [Identification](#identification)
+    * [Status](#status)
+    * [Description](#description)
+    * [Author](#author)
+    * [References](#references)
+    * [Date](#date)
+    * [Modified](#modified)
+    * [Correlation section](#correlation-section)
+      * [Correlation type](#correlation-type)
+      * [Related rules](#related-rules)
+      * [Aliases](#aliases)
+      * [Grouping](#grouping)
+      * [Time Selection](#time-selection)
+      * [Condition](#condition)
+    * [FalsePositives](#falsepositives)
+    * [Level](#level)
+    * [Generate](#generate)
+  * [Correlation Types](#correlation-types)
+    * [Event Count (event\_count)](#event-count-event_count)
+    * [Value Count (value\_count)](#value-count-value_count)
+    * [Temporal Proximity (temporal)](#temporal-proximity-temporal)
+    * [Ordered Temporal Proximity (temporal\_ordered)](#ordered-temporal-proximity-temporal_ordered)
+  * [Field Name Aliases](#field-name-aliases)
+    * [Field Name Aliases Example](#field-name-aliases-example)
+* [Examples](#examples)
+  * [Failed Logins Followed by Successful Login](#failed-logins-followed-by-successful-login)
+* [History](#history)
 
 ## Introduction
 
@@ -151,12 +151,12 @@ id: 0e95725d-7320-415d-80f7-004da920fc11
 
 Declares the status of the rule:
 
-- `stable`: the rule is considered as stable and may be used in production systems or dashboards.
-- `test`: a mostly stable rule that could require some slight adjustments depending on the environement.
-- `experimental`: an experimental rule that could lead to false positives results or be noisy, but could also identify interesting
+* `stable`: the rule is considered as stable and may be used in production systems or dashboards.
+* `test`: a mostly stable rule that could require some slight adjustments depending on the environement.
+* `experimental`: an experimental rule that could lead to false positives results or be noisy, but could also identify interesting
   events.
-- `deprecated`: the rule is replaced or covered by another one. The link is established by the `related` field.
-- `unsupported`: the rule cannot be use in its current state (old correlation format, custom fields)
+* `deprecated`: the rule is replaced or covered by another one. The link is established by the `related` field.
+* `unsupported`: the rule cannot be use in its current state (old correlation format, custom fields)
 
 #### Description
 
@@ -263,6 +263,7 @@ optionally defines one or multiple fields which should be treated as separate ev
 When you use multiple fields they are linked by an **AND**.
 
 for example, if we want to group by the unique "name/domain" pair:
+
 ```yaml
 group-by:
     - TargetUserName
@@ -308,6 +309,7 @@ It is a map of exactly one condition criterion:
 * `eq`: The count must be equal the given value
 
 Example:
+
 ```yaml
 condition:
     gte: 100
@@ -316,6 +318,7 @@ condition:
 To define a range, you can use the conjunction 'AND' in the mapping.
 
 Example "101 to 200":
+
 ```yaml
 condition:
     gt: 100
@@ -360,9 +363,10 @@ The resulting query must count events for each group specified by group-by separ
 The condition finally defines how many events must occur to generate a search hit.
 
 Requires :
- - `group-by`
- - `timespan`
- - `condition`
+
+* `group-by`
+* `timespan`
+* `condition`
 
 Simple example : More than or equal 100 failed login attempts to a destination host in an hour:
 
@@ -387,10 +391,11 @@ The resulting query must count field values separately for each group specified 
 The condition finally defines how many values must occur to generate a search hit.
 
 Requires:
-  - `group-by`
-  - `timespan`
-  - `condition`
-  - `field` in condition section.
+
+* `group-by`
+* `timespan`
+* `condition`
+* `field` in condition section.
 
 Simple example : Failed logon attempts with more than 100 different user accounts per source and destination at a day:
 
@@ -418,9 +423,10 @@ The values of fields defined in group-by must all have the same value (e.g. the 
 The time frame should not be restricted to boundaries if this is not required by the given backend.
 
 Requires:
-  - `rules`
-  - `group-by`
-  - `timespan`
+
+* `rules`
+* `group-by`
+* `timespan`
 
 Simple example : Reconnaissance commands defined in three Sigma rules are invoked in arbitrary order within 5 minutes on a system by the same user:
 
@@ -443,9 +449,10 @@ The *temporal_ordered* correlation type behaves like *temporal* and requires in 
 order provided in the *rule* attribute.
 
 Requires:
-  - `rules`
-  - `group-by`
-  - `timespan`
+
+* `rules`
+* `group-by`
+* `timespan`
 
 Example: many failed logins as defined above are followed by a successful login by of the same user account within 1 hour:
 
@@ -469,7 +476,7 @@ Sometimes correlation of values in the same fields is not sufficient. E.g. a cor
 
 Aliases are defined as follows:
 
-```
+```yaml
 aliases:
   <alias name>:
     <Sigma rule name>: <source field name in event matched by Sigma rule>
@@ -510,6 +517,7 @@ detection:
 ```
 
 The correlation rule
+
 ```yaml
 title: —
 id: —

@@ -1,4 +1,4 @@
-# Sigma Modifiers <!-- omit in toc -->
+# Sigma Modifiers
 
 The following document defines the standardized modifiers that can be used in Sigma.
 
@@ -7,15 +7,15 @@ The following document defines the standardized modifiers that can be used in Si
 
 ## Summary
 
-- [Summary](#summary)
-  - [Generic Modifiers](#generic-modifiers)
-  - [String Modifiers](#string-modifiers)
-    - [Regular Expression](#regular-expression)
-    - [Encoding](#encoding)
-  - [Numeric Modifiers](#numeric-modifiers)
-  - [IP (Internet Protocol) Modifiers](#ip-internet-protocol-modifiers)
-  - [Specific Modifiers](#specific-modifiers)
-- [History](#history)
+* [Summary](#summary)
+  * [Generic Modifiers](#generic-modifiers)
+  * [String Modifiers](#string-modifiers)
+    * [Regular Expression](#regular-expression)
+    * [Encoding](#encoding)
+  * [Numeric Modifiers](#numeric-modifiers)
+  * [IP (Internet Protocol) Modifiers](#ip-internet-protocol-modifiers)
+  * [Specific Modifiers](#specific-modifiers)
+* [History](#history)
 
 ### Generic Modifiers
 
@@ -60,7 +60,6 @@ The modifiers listed in this section can only be applied to string values.
       * Positive Lookbehind: `(?<=...)`
       * Negative Lookbehind: `(?<!...)`
     * Atomic Grouping: `(?>`
-
 
 * `re` sub-modifiers:
   * `i`: (insensitive) to enable case-insensitive matching.

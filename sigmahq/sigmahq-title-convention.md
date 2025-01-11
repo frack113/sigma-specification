@@ -1,17 +1,22 @@
-# SigmaHQ Title Conventions <!-- omit in toc -->
+# SigmaHQ Title Conventions
 
 This document provides general guidelines and tips on how to write titles for sigma rules.
 
 Note that this is by no means an exhaustive list. It is meant to be a general guide for inspiration and to have an easily sharable resource for new contributors (e.g. a resource to link at in PR discussions).
 
-## Table Of Content <!-- omit in toc -->
+## Table Of Content
 
-- [Summary](#summary)
-- [Generality](#generality)
-- [Structure](#structure)
-  - [Prefix (Optional)](#prefix-optional)
-  - [Suffix (Optional)](#suffix-optional)
-  - [Main Title](#main-title)
+* [Table Of Content](#table-of-content)
+
+* [Summary](#summary)
+* [Structure](#structure)
+  * [Prefix (Optional)](#prefix-optional)
+  * [Suffix (Optional)](#suffix-optional)
+  * [Main Title](#main-title)
+    * [Informational / Low Level Rules](#informational--low-level-rules)
+    * [Medium Level Rules](#medium-level-rules)
+    * [High Level Rules](#high-level-rules)
+    * [Critical Level Rules](#critical-level-rules)
 
 ## Summary
 
@@ -29,16 +34,16 @@ It is used to give a category, type of malware or name a threat actor. The choic
 
 Examples:
 
-- HackTool
-- PUA
-- Remote Access Tool
+* HackTool
+* PUA
+* Remote Access Tool
 
 Specific wording example:
 
-- "ATP27 - "
-- "ATP29 - "
-- "UNC2452 - "
-- "UNC4841 - "
+* "ATP27 - "
+* "ATP29 - "
+* "UNC2452 - "
+* "UNC4841 - "
 
 ### Suffix (Optional)
 
@@ -63,11 +68,11 @@ The title does not need to use the terms "Detect" or "Detection". It doesn't hav
 We use a simple formula to describe the alert.
 Example:
 
-- "7Zip Compressing ..."
-- "Add User to ..."
-- "Bypass UAC Using ..."
-- "Renamed xxx Execution"
-- "UAC Bypass Using ..."
+* "7Zip Compressing ..."
+* "Add User to ..."
+* "Bypass UAC Using ..."
+* "Renamed xxx Execution"
+* "UAC Bypass Using ..."
 
 #### Informational / Low Level Rules
 
@@ -83,7 +88,7 @@ Events matching `medium` level rules rules can have environment dependent false 
 
 Keywords used to indicate this:
 
-- "Potential "
+* "Potential "
 
 #### High Level Rules
 
@@ -91,7 +96,7 @@ Events matching `high` level rules requires a prompt review.
 
 Keywords used to indicate this:
 
-- "Suspicious "
+* "Suspicious "
 
 #### Critical Level Rules
 
@@ -100,7 +105,7 @@ The title must therefore be precise and indicate the specific threat.
 
 Keywords used to indicate this:
 
-- "Malware"
-- "Exploit"
-- "... Attempt"
-- "<Threat Actor> Activity"
+* "Malware"
+* "Exploit"
+* "... Attempt"
+* "<Threat Actor> Activity"
