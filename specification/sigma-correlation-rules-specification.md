@@ -38,6 +38,17 @@ The following document defines the standardized correlation that can be used in 
     - [Value Count (value\_count)](#value-count-value_count)
     - [Temporal Proximity (temporal)](#temporal-proximity-temporal)
     - [Ordered Temporal Proximity (temporal\_ordered)](#ordered-temporal-proximity-temporal_ordered)
+    - [Base line (baseline)](#base-line-baseline)
+      - [first\_seen](#first_seen)
+      - [rare](#rare)
+      - [spike ?](#spike-)
+      - [frequency\_drift ?](#frequency_drift-)
+      - [threshold ?](#threshold-)
+      - [absent](#absent)
+      - [deviation ?](#deviation-)
+      - [persistence ?](#persistence-)
+      - [outlier ?](#outlier-)
+      - [seasonality ?](#seasonality-)
   - [Field Name Aliases](#field-name-aliases)
     - [Field Name Aliases Example](#field-name-aliases-example)
 - [Examples](#examples)
@@ -215,6 +226,7 @@ Allowed values:
 * value_count
 * temporal
 * temporal_ordered
+* baseline
 
 ##### Related rules
 
@@ -463,13 +475,131 @@ correlation:
 Note:
 Even if the rule many_failed_logins groups by the "ComputerName" field, the correlation rule only uses its own `group-by` "User".
 
+#### Base line (baseline)
+
+The aim is to find a deviance from behaviour considered normal.
+
+Requires:
+  - `rules`
+  - `group-by`
+  - `timespan`
+
+In the `condition` section
+  - `baseline-type`
+  - `field`
+  - `windows`
+
+##### first_seen
+
+Description: Detects values that have never been seen before in a specific field (e.g., CommandLine, UserName, FilePath).
+Use Case: A new binary hash executing, a new user accessing a system, or a new domain being queried.
+
+Example: A new CommandLine in the last 15m with a reference base of 30 days
+
+```yaml
+correlation:
+    type: baseline
+    rules:
+        - cmd_cli
+    group-by:
+        - User
+    timespan: 15m
+    condition:
+        baseline-type: first_seen
+        field: CommandLine
+        windows: 30d
+```
+
+##### rare
+
+Description: Flags events or values that occur very infrequently in comparison to historical data.
+Use Case: A rarely used command being executed, an IP address accessing a server unusually.
+
+Example: A new DestinationIp for a Image in the last 15m with a reference base of 7 days
+
+```yaml
+correlation:
+    type: baseline
+    rules:
+        - network_connection_detected
+    group-by:
+        - Image
+    timespan: 15m
+    condition:
+        baseline-type: rare
+        field: DestinationIp
+        windows: 7d
+```
+
+##### spike ?
+
+Description: Detects a sudden increase in the frequency of an event compared to historical patterns.
+Use Case: A sudden spike in login attempts, data exfiltration, or API requests.
+Example Field: LogonAttempt, DataTransferred, RequestCount
+
+##### frequency_drift ?
+
+Description: Identifies gradual changes in frequency or patterns over time (e.g., slow increase in failed login attempts).
+Use Case: Slow brute-force attack, gradual data exfiltration over time.
+Example Field: FailedLoginCount, RequestCount
+
+##### threshold ?
+
+Description: Flags an event when a value exceeds a predefined or dynamic threshold based on historical patterns.
+Use Case: Excessive file uploads, abnormal CPU or memory usage, large volume of emails sent.
+Example Field: BytesSent, CPUUsage, MemoryUsage
+
+##### absent
+
+Description: Flags when something expected does not occur within a specific timeframe.
+Use Case: A scheduled backup job not running, an expected login missing from a critical account.
+Example Field: JobName, UserName
+
+Example: No defneder update event for a hostname in the last 48h
+
+```yaml
+correlation:
+    type: baseline
+    rules:
+        - defender_update
+    group-by:
+        - hostname
+    timespan: 48h
+    condition:
+        baseline-type: absent
+```
+
+##### deviation ?
+
+Description: Detects when a value significantly deviates from its historical mean or standard deviation.
+Use Case: A user accessing systems at odd hours, abnormal file download size.
+Example Field: AccessTime, FileSize
+
+##### persistence ?
+
+Description: Flags recurring events or patterns over a period that indicate persistent activity.
+Use Case: Malware maintaining persistence, scheduled task repeatedly being triggered.
+Example Field: ScheduledTask, RegistryKey
+
+##### outlier ?
+
+Description: Detects values or patterns that stand out significantly from the norm based on statistical models.
+Use Case: An unusually large transfer of data, an irregular login from a remote location.
+Example Field: FileSize, LoginLocation
+
+##### seasonality ?
+
+Description: Flags patterns or events occurring outside expected time windows based on historical norms.
+Use Case: Access occurring outside business hours, jobs running at unusual intervals.
+Example Field: AccessTime, ScheduledTask
+
 ### Field Name Aliases
 
 Sometimes correlation of values in the same fields is not sufficient. E.g. a correlation rule might require to aggregate events that appear from a source address in one event and the same address as destination in another event. A Sigma correlation rule can contain an `aliases` attribute that defines an alias for different field names in events matched by different Sigma rules. The alias field names can then be referenced in `group-by` attributes and are resolved to their respective field names.
 
 Aliases are defined as follows:
 
-```
+```yaml
 aliases:
   <alias name>:
     <Sigma rule name>: <source field name in event matched by Sigma rule>
