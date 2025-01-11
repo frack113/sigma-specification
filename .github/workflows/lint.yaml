@@ -1,0 +1,12 @@
+name: Lint the project
+on: [push, pull_request]
+
+jobs:
+    markdownlint-cli2:
+        name: Lint with markdownlint-cli2
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+          - name: Lint Markdown code
+            uses: DavidAnson/markdownlint-cli2-action@v19

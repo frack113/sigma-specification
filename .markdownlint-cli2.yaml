@@ -1,0 +1,6 @@
+config:
+  first-line-h1: false
+  no-inline-html: false
+  no-duplicate-heading: false
+gitignore: true
+globs: ['**.md']
