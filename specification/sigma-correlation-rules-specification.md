@@ -41,7 +41,7 @@ The following document defines the standardized correlation that can be used in 
     - [Base line (baseline)](#base-line-baseline)
       - [first\_seen](#first_seen)
       - [rare](#rare)
-      - [spike ?](#spike-)
+      - [spike](#spike)
       - [frequency\_drift ?](#frequency_drift-)
       - [threshold ?](#threshold-)
       - [absent](#absent)
@@ -372,6 +372,7 @@ The resulting query must count events for each group specified by group-by separ
 The condition finally defines how many events must occur to generate a search hit.
 
 Requires :
+
  - `group-by`
  - `timespan`
  - `condition`
@@ -399,6 +400,7 @@ The resulting query must count field values separately for each group specified 
 The condition finally defines how many values must occur to generate a search hit.
 
 Requires:
+
   - `group-by`
   - `timespan`
   - `condition`
@@ -430,6 +432,7 @@ The values of fields defined in group-by must all have the same value (e.g. the 
 The time frame should not be restricted to boundaries if this is not required by the given backend.
 
 Requires:
+
   - `rules`
   - `group-by`
   - `timespan`
@@ -455,6 +458,7 @@ The *temporal_ordered* correlation type behaves like *temporal* and requires in 
 order provided in the *rule* attribute.
 
 Requires:
+
   - `rules`
   - `group-by`
   - `timespan`
@@ -480,21 +484,23 @@ Even if the rule many_failed_logins groups by the "ComputerName" field, the corr
 The aim is to find a deviance from behaviour considered normal.
 
 Requires:
-  - `rules`
-  - `group-by`
-  - `timespan`
+
+* `rules`
+* `group-by`
+* `timespan`
 
 In the `condition` section
-  - `baseline-type`
-  - `field`
-  - `windows`
+
+* `baseline-type`
+* `field`
+* `windows`
 
 ##### first_seen
 
 Description: Detects values that have never been seen before in a specific field (e.g., CommandLine, UserName, FilePath).
 Use Case: A new binary hash executing, a new user accessing a system, or a new domain being queried.
 
-Example: A new CommandLine in the last 15m with a reference base of 30 days
+Example: A new CommandLine in the last 15m with a reference base of 30 days for a User
 
 ```yaml
 correlation:
@@ -531,11 +537,29 @@ correlation:
         windows: 7d
 ```
 
-##### spike ?
+##### spike
 
 Description: Detects a sudden increase in the frequency of an event compared to historical patterns.
 Use Case: A sudden spike in login attempts, data exfiltration, or API requests.
-Example Field: LogonAttempt, DataTransferred, RequestCount
+
+Example: There is a difference of more than 100 failures this connection over 1 hour compared to the average over one day.
+-> it really needs to be reworked :)
+-> spike can be up or down ,need another field ?
+
+```yaml
+correlation:
+    type: baseline
+    rules:
+        - network_failded_logon
+    group-by:
+        - IPAddress
+    timespan: 1h
+    condition:
+        baseline-type: spike
+        field: UserPrincipalName
+        windows: 1d
+        gt: 100
+```
 
 ##### frequency_drift ?
 
