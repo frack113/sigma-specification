@@ -5,55 +5,55 @@ The following document defines the standardized correlation that can be used in 
 * Version 2.0.2
 * Release date 2024-11-01
 
-- [Introduction](#introduction)
-  - [Compatibility](#compatibility)
-  - [Expression of Relationships In The Condition of Sigma Rules](#expression-of-relationships-in-the-condition-of-sigma-rules)
-  - [Type of Correlation rules](#type-of-correlation-rules)
-- [Correlation rules](#correlation-rules)
-  - [File Structure](#file-structure)
-    - [YAML File](#yaml-file)
-    - [Schema](#schema)
-    - [Syntax](#syntax)
-  - [Components](#components)
-    - [Title](#title)
-    - [Identification](#identification)
-    - [Status](#status)
-    - [Description](#description)
-    - [Author](#author)
-    - [References](#references)
-    - [Date](#date)
-    - [Modified](#modified)
-    - [Correlation section](#correlation-section)
-      - [Correlation type](#correlation-type)
-      - [Related rules](#related-rules)
-      - [Aliases](#aliases)
-      - [Grouping](#grouping)
-      - [Time Selection](#time-selection)
-      - [Condition](#condition)
-    - [FalsePositives](#falsepositives)
-    - [Level](#level)
-    - [Generate](#generate)
-  - [Correlation Types](#correlation-types)
-    - [Event Count (event\_count)](#event-count-event_count)
-    - [Value Count (value\_count)](#value-count-value_count)
-    - [Temporal Proximity (temporal)](#temporal-proximity-temporal)
-    - [Ordered Temporal Proximity (temporal\_ordered)](#ordered-temporal-proximity-temporal_ordered)
-    - [Base line (baseline)](#base-line-baseline)
-      - [first\_seen](#first_seen)
-      - [rare](#rare)
-      - [spike](#spike)
-      - [frequency\_drift ?](#frequency_drift-)
-      - [threshold ?](#threshold-)
-      - [absent](#absent)
-      - [deviation ?](#deviation-)
-      - [persistence ?](#persistence-)
-      - [outlier ?](#outlier-)
-      - [seasonality ?](#seasonality-)
-  - [Field Name Aliases](#field-name-aliases)
-    - [Field Name Aliases Example](#field-name-aliases-example)
-- [Examples](#examples)
-  - [Failed Logins Followed by Successful Login](#failed-logins-followed-by-successful-login)
-- [History](#history)
+* [Introduction](#introduction)
+  * [Compatibility](#compatibility)
+  * [Expression of Relationships In The Condition of Sigma Rules](#expression-of-relationships-in-the-condition-of-sigma-rules)
+  * [Type of Correlation rules](#type-of-correlation-rules)
+* [Correlation rules](#correlation-rules)
+  * [File Structure](#file-structure)
+    * [YAML File](#yaml-file)
+    * [Schema](#schema)
+    * [Syntax](#syntax)
+  * [Components](#components)
+    * [Title](#title)
+    * [Identification](#identification)
+    * [Status](#status)
+    * [Description](#description)
+    * [Author](#author)
+    * [References](#references)
+    * [Date](#date)
+    * [Modified](#modified)
+    * [Correlation section](#correlation-section)
+      * [Correlation type](#correlation-type)
+      * [Related rules](#related-rules)
+      * [Aliases](#aliases)
+      * [Grouping](#grouping)
+      * [Time Selection](#time-selection)
+      * [Condition](#condition)
+    * [FalsePositives](#falsepositives)
+    * [Level](#level)
+    * [Generate](#generate)
+  * [Correlation Types](#correlation-types)
+    * [Event Count (event\_count)](#event-count-event_count)
+    * [Value Count (value\_count)](#value-count-value_count)
+    * [Temporal Proximity (temporal)](#temporal-proximity-temporal)
+    * [Ordered Temporal Proximity (temporal\_ordered)](#ordered-temporal-proximity-temporal_ordered)
+    * [Base line (baseline)](#base-line-baseline)
+      * [first\_seen](#first_seen)
+      * [rare](#rare)
+      * [spike](#spike)
+      * [frequency\_drift ?](#frequency_drift-)
+      * [threshold ?](#threshold-)
+      * [absent](#absent)
+      * [deviation ?](#deviation-)
+      * [persistence ?](#persistence-)
+      * [outlier ?](#outlier-)
+      * [seasonality ?](#seasonality-)
+  * [Field Name Aliases](#field-name-aliases)
+    * [Field Name Aliases Example](#field-name-aliases-example)
+* [Examples](#examples)
+  * [Failed Logins Followed by Successful Login](#failed-logins-followed-by-successful-login)
+* [History](#history)
 
 ## Introduction
 
@@ -162,12 +162,12 @@ id: 0e95725d-7320-415d-80f7-004da920fc11
 
 Declares the status of the rule:
 
-- `stable`: the rule is considered as stable and may be used in production systems or dashboards.
-- `test`: a mostly stable rule that could require some slight adjustments depending on the environement.
-- `experimental`: an experimental rule that could lead to false positives results or be noisy, but could also identify interesting
+* `stable`: the rule is considered as stable and may be used in production systems or dashboards.
+* `test`: a mostly stable rule that could require some slight adjustments depending on the environement.
+* `experimental`: an experimental rule that could lead to false positives results or be noisy, but could also identify interesting
   events.
-- `deprecated`: the rule is replaced or covered by another one. The link is established by the `related` field.
-- `unsupported`: the rule cannot be use in its current state (old correlation format, custom fields)
+* `deprecated`: the rule is replaced or covered by another one. The link is established by the `related` field.
+* `unsupported`: the rule cannot be use in its current state (old correlation format, custom fields)
 
 #### Description
 
@@ -275,6 +275,7 @@ optionally defines one or multiple fields which should be treated as separate ev
 When you use multiple fields they are linked by an **AND**.
 
 for example, if we want to group by the unique "name/domain" pair:
+
 ```yaml
 group-by:
     - TargetUserName
@@ -320,6 +321,7 @@ It is a map of exactly one condition criterion:
 * `eq`: The count must be equal the given value
 
 Example:
+
 ```yaml
 condition:
     gte: 100
@@ -328,6 +330,7 @@ condition:
 To define a range, you can use the conjunction 'AND' in the mapping.
 
 Example "101 to 200":
+
 ```yaml
 condition:
     gt: 100
@@ -373,9 +376,9 @@ The condition finally defines how many events must occur to generate a search hi
 
 Requires :
 
- - `group-by`
- - `timespan`
- - `condition`
+* `group-by`
+* `timespan`
+* `condition`
 
 Simple example : More than or equal 100 failed login attempts to a destination host in an hour:
 
@@ -401,10 +404,10 @@ The condition finally defines how many values must occur to generate a search hi
 
 Requires:
 
-  - `group-by`
-  - `timespan`
-  - `condition`
-  - `field` in condition section.
+* `group-by`
+* `timespan`
+* `condition`
+* `field` in condition section.
 
 Simple example : Failed logon attempts with more than 100 different user accounts per source and destination at a day:
 
@@ -433,9 +436,9 @@ The time frame should not be restricted to boundaries if this is not required by
 
 Requires:
 
-  - `rules`
-  - `group-by`
-  - `timespan`
+* `rules`
+* `group-by`
+* `timespan`
 
 Simple example : Reconnaissance commands defined in three Sigma rules are invoked in arbitrary order within 5 minutes on a system by the same user:
 
@@ -459,9 +462,9 @@ order provided in the *rule* attribute.
 
 Requires:
 
-  - `rules`
-  - `group-by`
-  - `timespan`
+* `rules`
+* `group-by`
+* `timespan`
 
 Example: many failed logins as defined above are followed by a successful login by of the same user account within 1 hour:
 
@@ -544,7 +547,12 @@ Use Case: A sudden spike in login attempts, data exfiltration, or API requests.
 
 Example: There is a difference of more than 100 failures this connection over 1 hour compared to the average over one day.
 -> it really needs to be reworked :)
--> spike can be up or down ,need another field ?
+
+Spike can be:
+
+* up: positif spike
+* down: negatif spike
+* both: up or down
 
 ```yaml
 correlation:
@@ -559,19 +567,53 @@ correlation:
         field: UserPrincipalName
         windows: 1d
         gt: 100
+        type: up
 ```
 
-##### frequency_drift ?
+##### frequency_drift
 
 Description: Identifies gradual changes in frequency or patterns over time (e.g., slow increase in failed login attempts).
 Use Case: Slow brute-force attack, gradual data exfiltration over time.
-Example Field: FailedLoginCount, RequestCount
+
+Example Field: slow network brute force over a week
+
+-> miss something , need to find siem use
+
+```yaml
+correlation:
+    type: baseline
+    rules:
+        - network_failded_logon
+    group-by:
+        - IPAddress
+    timespan: 1h
+    condition:
+        baseline-type: frequency_drift
+        windows: 1w
+```
 
 ##### threshold ?
 
 Description: Flags an event when a value exceeds a predefined or dynamic threshold based on historical patterns.
+
+ref -> https://d3fend.mitre.org/technique/d3f:AuthenticationEventThresholding/
+
 Use Case: Excessive file uploads, abnormal CPU or memory usage, large volume of emails sent.
+
 Example Field: BytesSent, CPUUsage, MemoryUsage
+
+```yaml
+correlation:
+    type: baseline
+    rules:
+        - xxx
+    group-by:
+        - xxx
+    timespan: 1h
+    condition:
+        baseline-type: threshold
+        windows: 1w
+```
 
 ##### absent
 
@@ -579,7 +621,7 @@ Description: Flags when something expected does not occur within a specific time
 Use Case: A scheduled backup job not running, an expected login missing from a critical account.
 Example Field: JobName, UserName
 
-Example: No defneder update event for a hostname in the last 48h
+Example: No defender update event for a hostname in the last 48h
 
 ```yaml
 correlation:
