@@ -42,8 +42,8 @@ The following document defines the standardized correlation that can be used in 
       * [first\_seen](#first_seen)
       * [rare](#rare)
       * [spike](#spike)
-      * [frequency\_drift ?](#frequency_drift-)
-      * [threshold ?](#threshold-)
+      * [frequency_drift](#frequency_drift)
+      * [threshold](#threshold)
       * [absent](#absent)
       * [deviation ?](#deviation-)
       * [persistence ?](#persistence-)
@@ -592,11 +592,11 @@ correlation:
         windows: 1w
 ```
 
-##### threshold ?
+##### threshold
 
 Description: Flags an event when a value exceeds a predefined or dynamic threshold based on historical patterns.
 
-ref -> https://d3fend.mitre.org/technique/d3f:AuthenticationEventThresholding/
+ref -> <https://d3fend.mitre.org/technique/d3f:AuthenticationEventThresholding/>
 
 Use Case: Excessive file uploads, abnormal CPU or memory usage, large volume of emails sent.
 
@@ -706,6 +706,7 @@ detection:
 ```
 
 The correlation rule
+
 ```yaml
 title: —
 id: —
