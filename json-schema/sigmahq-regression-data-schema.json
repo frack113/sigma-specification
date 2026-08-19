@@ -56,7 +56,7 @@
       "description": "List of regression test entries. Currently only Positive Detection Test type is supported.",
       "items": {
         "type": "object",
-        "required": ["name", "type", "path"],
+        "required": ["type", "path"],
         "properties": {
           "name": {
             "type": "string",
@@ -65,8 +65,8 @@
           },
           "type": {
             "type": "string",
-            "enum": ["evtx"],
-            "description": "Test type. Currently only \"evtx\" is supported by the runner. \"raw\", \"json\", and \"log\" are reserved for future use."
+            "enum": ["evtx", "json", "ndjson", "jsonl"],
+            "description": "Test type. \"evtx\" runs the sample through evtx-sigma-checker; \"json\" is a single JSON object; \"ndjson\"/\"jsonl\" are newline-delimited JSON objects converted via sigma convert and run by json_checker."
           },
           "provider": {
             "type": "string",
@@ -76,6 +76,20 @@
             "type": "integer",
             "minimum": 1,
             "description": "Minimum number of matches required. If omitted, the runner requires at least one match. If actual count exceeds this value, a warning is emitted rather than a failure."
+          },
+          "pipelines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Sigma pipelines applied before conversion. JSON types only; when omitted, the rule is converted with --without-pipeline."
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Sigma filters applied during conversion. JSON types only."
           },
           "path": {
             "type": "string",
