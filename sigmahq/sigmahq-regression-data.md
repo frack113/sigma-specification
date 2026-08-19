@@ -46,6 +46,8 @@ regression_data/
 │   ├── sysmon/
 │   ├── builtin/
 │   └── cisco/
+├── pipelines/
+│   └── process_creation_fieldmapping.yml
 ├── rules-emerging-threats/
 │   ├── 2025/
 │   │   ├── Exploits/
@@ -58,7 +60,9 @@ regression_data/
         └── image_load/
 ```
 
-`<ext>` is the file extension determined by the `type` field in `info.yml` (currently only `evtx` is supported by the runner).
+`<ext>` is the file extension of the test sample (`evtx` or `json`), determined by the `type` field in `info.yml`.
+
+The `pipelines/` directory holds Sigma conversion pipelines referenced by JSON test entries via the `pipelines` field in `info.yml`.
 
 The directory name under `regression_data/` must match the rule file name stem (without the `.yml` extension). For example, the rule `proc_creation_win_cipher_overwrite_deleted_data.yml` uses the directory `proc_creation_win_cipher_overwrite_deleted_data/`.
 
@@ -82,8 +86,8 @@ rule_metadata:
       title: <Rule Title>                     # Must match the Sigma rule's `title` field exactly
 regression_tests_info:
     - name: Positive Detection Test           # Test name (use "Positive Detection Test" for positive tests)
-      type: evtx                              # Test type: only `evtx` is currently supported
-      provider: Microsoft-Windows-Sysmon      # Log provider (optional, required for evtx)
+      type: evtx                              # Test type: evtx, json, ndjson, or jsonl
+      provider: Microsoft-Windows-Sysmon      # Log provider (informational, not used by the runner at the moment)
       match_count: 1                          # Minimum number of matches required. Omit to require at least one match.
       path: regression_data/<path>/<to>/<rule-dir>/<rule-id>.<ext>
 ```
@@ -98,11 +102,13 @@ regression_tests_info:
 | `author`                              | Full name of the author, optionally followed by organization in parentheses.                                                                                            |
 | `rule_metadata.id`                    | The Sigma rule UUID. **Must exactly match** the `id` field in the corresponding `.yml` rule file.                                                                       |
 | `rule_metadata.title`                 | The Sigma rule title. **Must exactly match** the `title` field in the corresponding `.yml` rule file.                                                                   |
-| `regression_tests_info[].name`        | Human-readable test name. Use `"Positive Detection Test"` for tests that verify the rule matches.                                                                       |
-| `regression_tests_info[].type`        | Test type. Currently only `evtx` is supported by the runner. `raw`, `json`, and `log` are reserved for future use.                                                      |
-| `regression_tests_info[].provider`    | Windows event provider used by the evtx-sigma-checker. All existing tests include it, but the runner does not enforce its presence.                                     |
+| `regression_tests_info[].name`        | Optional human-readable test name. Use `"Positive Detection Test"` for tests that verify the rule matches. The runner falls back to `Unnamed Test` if omitted.          |
+| `regression_tests_info[].type`        | Test type. Supported values: `evtx`, `json`, `ndjson`, `jsonl`.                                                                                                         |
+| `regression_tests_info[].provider`    | Windows event provider. Informational only — the runner does not use it at the moment.                                                                                  |
 | `regression_tests_info[].match_count` | Minimum number of matches required. If omitted, the runner requires at least one match. If actual count exceeds this value, a warning is emitted rather than a failure. |
 | `regression_tests_info[].path`        | Relative path from the repository root to the test sample file.                                                                                                         |
+| `regression_tests_info[].pipelines`   | Optional array of paths to Sigma conversion pipelines, applied before the rule is compiled. JSON test types only.                                                       |
+| `regression_tests_info[].filters`     | Optional array of paths to Sigma filters, applied during rule compilation. JSON test types only.                                                                        |
 
 ## Linking Regression Tests to Sigma Rules
 
@@ -154,12 +160,12 @@ Test sample files are named using the Sigma rule's UUID as the stem:
 
 The extension depends on the `type` field in `info.yml`:
 
-| `type` | Expected extension | Example                                     |
-| ------ | ------------------ | ------------------------------------------- |
-| `evtx` | `.evtx`            | `4b046706-5789-4673-b111-66f25fe99534.evtx` |
-| `json` | `.json`            | Not yet supported by the test runner        |
-| `log`  | `.log`             | Not yet supported by the test runner        |
-| `raw`  | `.raw`             | Not yet supported by the test runner        |
+| `type`   | Expected extension | Example                                     |
+| -------- | ------------------ | ------------------------------------------- |
+| `evtx`   | `.evtx`            | `4b046706-5789-4673-b111-66f25fe99534.evtx` |
+| `json`   | `.json`            | `4b046706-5789-4673-b111-66f25fe99534.json` |
+| `ndjson` | `.json`            | `4b046706-5789-4673-b111-66f25fe99534.json` |
+| `jsonl`  | `.json`            | `4b046706-5789-4673-b111-66f25fe99534.json` |
 
 For example, for rule `id: 4b046706-5789-4673-b111-66f25fe99534` with `type: evtx`, the file must be:
 
@@ -167,13 +173,13 @@ For example, for rule `id: 4b046706-5789-4673-b111-66f25fe99534` with `type: evt
 regression_data/rules/windows/process_creation/proc_creation_win_cipher_overwrite_deleted_data/4b046706-5789-4673-b111-66f25fe99534.evtx
 ```
 
-A companion JSON file may also be included as a human-readable conversion of the `.evtx` file for debugging purposes:
+For `type: json`, `ndjson`, and `jsonl` entries, the test sample is a JSON file named after the rule ID:
 
 ```
 regression_data/rules/windows/process_creation/proc_creation_win_cipher_overwrite_deleted_data/4b046706-5789-4673-b111-66f25fe99534.json
 ```
 
-Companion files are optional. When included, they must follow the same naming convention (rule ID as stem) and must match the rule `id` for the runner to accept them.
+The file contains either a single JSON object (`json`) or one JSON object per line (`ndjson`, `jsonl`).
 
 ## Test Types
 
@@ -188,6 +194,12 @@ regression_tests_info:
       provider: Microsoft-Windows-Sysmon
       match_count: 1
       path: regression_data/.../4b046706-5789-4673-b111-66f25fe99534.evtx
+    - name: Positive Detection Test
+      type: json
+      match_count: 1
+      pipelines:
+          - regression_data/pipelines/process_creation_fieldmapping.yml
+      path: regression_data/.../4b046706-5789-4673-b111-66f25fe99534.json
 ```
 
 **Match count rules:**
