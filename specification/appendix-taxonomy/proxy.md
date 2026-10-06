@@ -24,21 +24,21 @@ The log file written by the proxy. The rules match on fields, not on keywords.
 
 ## Fields
 
-| Field Name        | Example Value                     | Comment                                                                                                               |
-| ----------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `c-uri`           | /download/setup.exe               | URL requested by the client                                                                                           |
-| `c-uri-extension` | exe                               | Extension of the URL. Commonly is the requested extension of a file name                                              |
-| `c-uri-query`     | id=42                             | Path component of requested URL                                                                                       |
-| `c-uri-stem`      | /download/setup                   | Stem of the requested URL                                                                                             |
-| `c-useragent`     | Mozilla/5.0                       | The client's user agent                                                                                               |
-| `cs-bytes`        | 1234                              | Number of bytes sent from the server                                                                                  |
-| `cs-cookie`       | session=1a2b3c                    | Cookie headers sent from client to server                                                                             |
-| `cs-host`         | www.example.com                   | Host header sent from client to server                                                                                |
-| `cs-method`       | GET                               | HTTP request method                                                                                                   |
-| `cs-version`      | HTTP/1.1                          | The HTTP protocol version that the client used                                                                        |
-| `dst_ip`          | 172.30.255.255                    | The IP address of the server                                                                                          |
-| `r-dns`           | www.example.com                   | The domain requested, additionally referred to as the Host header or URL domain. Recommends `cs-host` over this field |
-| `sc(Referer)`     | http://www.example.com/index.html | The referring link or site                                                                                            |
-| `sc-bytes`        | 4321                              | Number of bytes sent from the client                                                                                  |
-| `sc-status`       | 200                               | The HTTP status code                                                                                                  |
-| `src_ip`          | 172.22.255.255                    | The IP address of the client that made the request                                                                    |
+| Field Name        | Example Value        | Comment                                                                                                               |
+| ----------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `c-uri`           | /download/setup.exe  | URL requested by the client                                                                                           |
+| `c-uri-extension` | exe                  | Extension of the URL. Commonly is the requested extension of a file name                                              |
+| `c-uri-query`     | id=42                | Path component of requested URL                                                                                       |
+| `c-uri-stem`      | /download/setup      | Stem of the requested URL                                                                                             |
+| `c-useragent`     | Mozilla/5.0          | The client's user agent                                                                                               |
+| `cs-bytes`        | 1234                 | Number of bytes sent from the server                                                                                  |
+| `cs-cookie`       | session=1a2b3c       | Cookie headers sent from client to server                                                                             |
+| `cs-host`         | www.example.com      | Host header sent from client to server                                                                                |
+| `cs-method`       | GET                  | HTTP request method                                                                                                   |
+| `cs-version`      | HTTP/1.1             | The HTTP protocol version that the client used                                                                        |
+| `dst_ip`          | 172.30.255.255       | The IP address of the server                                                                                          |
+| `r-dns`           | www.example.com      | The domain requested, additionally referred to as the Host header or URL domain. Recommends `cs-host` over this field |
+| `sc(Referer)`     | https://example.com/ | The referring link or site                                                                                            |
+| `sc-bytes`        | 4321                 | Number of bytes sent from the client                                                                                  |
+| `sc-status`       | 200                  | The HTTP status code                                                                                                  |
+| `src_ip`          | 172.22.255.255       | The IP address of the client that made the request                                                                    |
