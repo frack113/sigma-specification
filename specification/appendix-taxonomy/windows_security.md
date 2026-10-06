@@ -12,6 +12,51 @@ logsource:
 - [Telemetry](#telemetry)
 - [Points of Attention](#points-of-attention)
 - [Fields](#fields)
+  - [Microsoft Windows Security Auditing / EventID: 4611](#microsoft-windows-security-auditing--eventid-4611)
+  - [Microsoft Windows Security Auditing / EventID: 4616](#microsoft-windows-security-auditing--eventid-4616)
+  - [Microsoft Windows Security Auditing / EventID: 4624](#microsoft-windows-security-auditing--eventid-4624)
+  - [Microsoft Windows Security Auditing / EventID: 4625](#microsoft-windows-security-auditing--eventid-4625)
+  - [Microsoft Windows Security Auditing / EventID: 4648](#microsoft-windows-security-auditing--eventid-4648)
+  - [Microsoft Windows Security Auditing / EventID: 4649](#microsoft-windows-security-auditing--eventid-4649)
+  - [Microsoft Windows Security Auditing / EventID: 4656](#microsoft-windows-security-auditing--eventid-4656)
+  - [Microsoft Windows Security Auditing / EventID: 4657](#microsoft-windows-security-auditing--eventid-4657)
+  - [Microsoft Windows Security Auditing / EventID: 4661](#microsoft-windows-security-auditing--eventid-4661)
+  - [Microsoft Windows Security Auditing / EventID: 4662](#microsoft-windows-security-auditing--eventid-4662)
+  - [Microsoft Windows Security Auditing / EventID: 4663](#microsoft-windows-security-auditing--eventid-4663)
+  - [Microsoft Windows Security Auditing / EventID: 4673](#microsoft-windows-security-auditing--eventid-4673)
+  - [Microsoft Windows Security Auditing / EventID: 4674](#microsoft-windows-security-auditing--eventid-4674)
+  - [Microsoft Windows Security Auditing / EventID: 4692](#microsoft-windows-security-auditing--eventid-4692)
+  - [Microsoft Windows Security Auditing / EventID: 4697](#microsoft-windows-security-auditing--eventid-4697)
+  - [Microsoft Windows Security Auditing / EventID: 4698](#microsoft-windows-security-auditing--eventid-4698)
+  - [Microsoft Windows Security Auditing / EventID: 4699](#microsoft-windows-security-auditing--eventid-4699)
+  - [Microsoft Windows Security Auditing / EventID: 4702](#microsoft-windows-security-auditing--eventid-4702)
+  - [Microsoft Windows Security Auditing / EventID: 4704](#microsoft-windows-security-auditing--eventid-4704)
+  - [Microsoft Windows Security Auditing / EventID: 4706](#microsoft-windows-security-auditing--eventid-4706)
+  - [Microsoft Windows Security Auditing / EventID: 4719](#microsoft-windows-security-auditing--eventid-4719)
+  - [Microsoft Windows Security Auditing / EventID: 4720](#microsoft-windows-security-auditing--eventid-4720)
+  - [Microsoft Windows Security Auditing / EventID: 4732](#microsoft-windows-security-auditing--eventid-4732)
+  - [Microsoft Windows Security Auditing / EventID: 4738](#microsoft-windows-security-auditing--eventid-4738)
+  - [Microsoft Windows Security Auditing / EventID: 4742](#microsoft-windows-security-auditing--eventid-4742)
+  - [Microsoft Windows Security Auditing / EventID: 4768](#microsoft-windows-security-auditing--eventid-4768)
+  - [Microsoft Windows Security Auditing / EventID: 4769](#microsoft-windows-security-auditing--eventid-4769)
+  - [Microsoft Windows Security Auditing / EventID: 4776](#microsoft-windows-security-auditing--eventid-4776)
+  - [Microsoft Windows Security Auditing / EventID: 4781](#microsoft-windows-security-auditing--eventid-4781)
+  - [Microsoft Windows Security Auditing / EventID: 4794](#microsoft-windows-security-auditing--eventid-4794)
+  - [Microsoft Windows Security Auditing / EventID: 4800](#microsoft-windows-security-auditing--eventid-4800)
+  - [Microsoft Windows Security Auditing / EventID: 4825](#microsoft-windows-security-auditing--eventid-4825)
+  - [Microsoft Windows Security Auditing / EventID: 4898](#microsoft-windows-security-auditing--eventid-4898)
+  - [Microsoft Windows Security Auditing / EventID: 4899](#microsoft-windows-security-auditing--eventid-4899)
+  - [Microsoft Windows Security Auditing / EventID: 5136](#microsoft-windows-security-auditing--eventid-5136)
+  - [Microsoft Windows Security Auditing / EventID: 5140](#microsoft-windows-security-auditing--eventid-5140)
+  - [Microsoft Windows Security Auditing / EventID: 5145](#microsoft-windows-security-auditing--eventid-5145)
+  - [Microsoft Windows Security Auditing / EventID: 5156](#microsoft-windows-security-auditing--eventid-5156)
+  - [Microsoft Windows Security Auditing / EventID: 5157](#microsoft-windows-security-auditing--eventid-5157)
+  - [Microsoft Windows Security Auditing / EventID: 5379](#microsoft-windows-security-auditing--eventid-5379)
+  - [Microsoft Windows Security Auditing / EventID: 5447](#microsoft-windows-security-auditing--eventid-5447)
+  - [Microsoft Windows Security Auditing / EventID: 5449](#microsoft-windows-security-auditing--eventid-5449)
+  - [Microsoft Windows Security Auditing / EventID: 6416](#microsoft-windows-security-auditing--eventid-6416)
+  - [Microsoft Windows Security Auditing / EventID: 6423](#microsoft-windows-security-auditing--eventid-6423)
+  - [Microsoft-Windows-Eventlog / EventID: 1102](#microsoft-windows-eventlog--eventid-1102)
 
 <!-- mdformat-toc end -->
 
@@ -181,3 +226,657 @@ The rules of this log source use the following field names:
 - `Workstation`
 - `WorkstationName`
 - `param1`
+
+<!-- event-fields:start -->
+
+The fields written for the event identifiers of the `## Telemetry` section, from the [EVTX-ETW-Resources](https://github.com/nasbench/EVTX-ETW-Resources) manifests and provider CSVs. Event identifiers the source doesn't document are left out.
+
+### Microsoft Windows Security Auditing / EventID: 4611
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `LogonProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4616
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `PreviousDate`
+- `PreviousTime`
+- `NewDate`
+- `NewTime`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4624
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TargetUserSid`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetLogonId`
+- `LogonType`
+- `LogonProcessName`
+- `AuthenticationPackageName`
+- `WorkstationName`
+- `LogonGuid`
+- `TransmittedServices`
+- `LmPackageName`
+- `KeyLength`
+- `ProcessId`
+- `ProcessName`
+- `IpAddress`
+- `IpPort`
+
+### Microsoft Windows Security Auditing / EventID: 4625
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TargetUserSid`
+- `TargetUserName`
+- `TargetDomainName`
+- `Status`
+- `FailureReason`
+- `SubStatus`
+- `LogonType`
+- `LogonProcessName`
+- `AuthenticationPackageName`
+- `WorkstationName`
+- `TransmittedServices`
+- `LmPackageName`
+- `KeyLength`
+- `ProcessId`
+- `ProcessName`
+- `IpAddress`
+- `IpPort`
+
+### Microsoft Windows Security Auditing / EventID: 4648
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `LogonGuid`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetLogonGuid`
+- `TargetServerName`
+- `TargetInfo`
+- `ProcessId`
+- `ProcessName`
+- `IpAddress`
+- `IpPort`
+
+### Microsoft Windows Security Auditing / EventID: 4649
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TargetUserName`
+- `TargetDomainName`
+- `RequestType`
+- `LogonProcessName`
+- `AuthenticationPackage`
+- `WorkstationName`
+- `TransmittedServices`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4656
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectServer`
+- `ObjectType`
+- `ObjectName`
+- `HandleId`
+- `TransactionId`
+- `AccessList`
+- `AccessMask`
+- `PrivilegeList`
+- `RestrictedSidCount`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4657
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectName`
+- `ObjectValueName`
+- `HandleId`
+- `OperationType`
+- `OldValueType`
+- `OldValue`
+- `NewValueType`
+- `NewValue`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4661
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectServer`
+- `ObjectType`
+- `ObjectName`
+- `HandleId`
+- `TransactionId`
+- `AccessList`
+- `AccessMask`
+- `PrivilegeList`
+- `Properties`
+- `RestrictedSidCount`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4662
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectServer`
+- `ObjectType`
+- `ObjectName`
+- `OperationType`
+- `HandleId`
+- `AccessList`
+- `AccessMask`
+- `Properties`
+- `AdditionalInfo`
+- `AdditionalInfo2`
+
+### Microsoft Windows Security Auditing / EventID: 4663
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectServer`
+- `ObjectType`
+- `ObjectName`
+- `HandleId`
+- `AccessList`
+- `AccessMask`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4673
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectServer`
+- `Service`
+- `PrivilegeList`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4674
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectServer`
+- `ObjectType`
+- `ObjectName`
+- `HandleId`
+- `AccessMask`
+- `PrivilegeList`
+- `ProcessId`
+- `ProcessName`
+
+### Microsoft Windows Security Auditing / EventID: 4692
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `MasterKeyId`
+- `RecoveryServer`
+- `RecoveryKeyId`
+- `FailureReason`
+
+### Microsoft Windows Security Auditing / EventID: 4697
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ServiceName`
+- `ServiceFileName`
+- `ServiceType`
+- `ServiceStartType`
+- `ServiceAccount`
+
+### Microsoft Windows Security Auditing / EventID: 4698
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TaskName`
+- `TaskContent`
+
+### Microsoft Windows Security Auditing / EventID: 4699
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TaskName`
+- `TaskContent`
+
+### Microsoft Windows Security Auditing / EventID: 4702
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TaskName`
+- `TaskContentNew`
+
+### Microsoft Windows Security Auditing / EventID: 4704
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TargetSid`
+- `PrivilegeList`
+
+### Microsoft Windows Security Auditing / EventID: 4706
+
+- `DomainName`
+- `DomainSid`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TdoType`
+- `TdoDirection`
+- `TdoAttributes`
+- `SidFilteringEnabled`
+
+### Microsoft Windows Security Auditing / EventID: 4719
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `CategoryId`
+- `SubcategoryId`
+- `SubcategoryGuid`
+- `AuditPolicyChanges`
+
+### Microsoft Windows Security Auditing / EventID: 4720
+
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetSid`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `PrivilegeList`
+- `SamAccountName`
+- `DisplayName`
+- `UserPrincipalName`
+- `HomeDirectory`
+- `HomePath`
+- `ScriptPath`
+- `ProfilePath`
+- `UserWorkstations`
+- `PasswordLastSet`
+- `AccountExpires`
+- `PrimaryGroupId`
+- `AllowedToDelegateTo`
+- `OldUacValue`
+- `NewUacValue`
+- `UserAccountControl`
+- `UserParameters`
+- `SidHistory`
+- `LogonHours`
+
+### Microsoft Windows Security Auditing / EventID: 4732
+
+- `MemberName`
+- `MemberSid`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetSid`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `PrivilegeList`
+
+### Microsoft Windows Security Auditing / EventID: 4738
+
+- `Dummy`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetSid`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `PrivilegeList`
+- `SamAccountName`
+- `DisplayName`
+- `UserPrincipalName`
+- `HomeDirectory`
+- `HomePath`
+- `ScriptPath`
+- `ProfilePath`
+- `UserWorkstations`
+- `PasswordLastSet`
+- `AccountExpires`
+- `PrimaryGroupId`
+- `AllowedToDelegateTo`
+- `OldUacValue`
+- `NewUacValue`
+- `UserAccountControl`
+- `UserParameters`
+- `SidHistory`
+- `LogonHours`
+
+### Microsoft Windows Security Auditing / EventID: 4742
+
+- `ComputerAccountChange`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetSid`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `PrivilegeList`
+- `SamAccountName`
+- `DisplayName`
+- `UserPrincipalName`
+- `HomeDirectory`
+- `HomePath`
+- `ScriptPath`
+- `ProfilePath`
+- `UserWorkstations`
+- `PasswordLastSet`
+- `AccountExpires`
+- `PrimaryGroupId`
+- `AllowedToDelegateTo`
+- `OldUacValue`
+- `NewUacValue`
+- `UserAccountControl`
+- `UserParameters`
+- `SidHistory`
+- `LogonHours`
+- `DnsHostName`
+- `ServicePrincipalNames`
+
+### Microsoft Windows Security Auditing / EventID: 4768
+
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetSid`
+- `ServiceName`
+- `ServiceSid`
+- `TicketOptions`
+- `Status`
+- `TicketEncryptionType`
+- `PreAuthType`
+- `IpAddress`
+- `IpPort`
+- `CertIssuerName`
+- `CertSerialNumber`
+- `CertThumbprint`
+
+### Microsoft Windows Security Auditing / EventID: 4769
+
+- `TargetUserName`
+- `TargetDomainName`
+- `ServiceName`
+- `ServiceSid`
+- `TicketOptions`
+- `TicketEncryptionType`
+- `IpAddress`
+- `IpPort`
+- `Status`
+- `LogonGuid`
+- `TransmittedServices`
+
+### Microsoft Windows Security Auditing / EventID: 4776
+
+- `PackageName`
+- `TargetUserName`
+- `Workstation`
+- `Status`
+
+### Microsoft Windows Security Auditing / EventID: 4781
+
+- `OldTargetUserName`
+- `NewTargetUserName`
+- `TargetDomainName`
+- `TargetSid`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `PrivilegeList`
+
+### Microsoft Windows Security Auditing / EventID: 4794
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `Workstation`
+- `Status`
+
+### Microsoft Windows Security Auditing / EventID: 4800
+
+- `TargetUserSid`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetLogonId`
+- `SessionId`
+
+### Microsoft Windows Security Auditing / EventID: 4825
+
+- `AccountName`
+- `AccountDomain`
+- `LogonID`
+- `ClientAddress`
+
+### Microsoft Windows Security Auditing / EventID: 4898
+
+- `TemplateInternalName`
+- `TemplateVersion`
+- `TemplateSchemaVersion`
+- `TemplateOID`
+- `TemplateDSObjectFQDN`
+- `DCDNSName`
+- `TemplateContent`
+- `SecurityDescriptor`
+
+### Microsoft Windows Security Auditing / EventID: 4899
+
+- `TemplateInternalName`
+- `TemplateVersion`
+- `TemplateSchemaVersion`
+- `TemplateOID`
+- `TemplateDSObjectFQDN`
+- `DCDNSName`
+- `NewTemplateContent`
+- `OldTemplateContent`
+
+### Microsoft Windows Security Auditing / EventID: 5136
+
+- `OpCorrelationID`
+- `AppCorrelationID`
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `DSName`
+- `DSType`
+- `ObjectDN`
+- `ObjectGUID`
+- `ObjectClass`
+- `AttributeLDAPDisplayName`
+- `AttributeSyntaxOID`
+- `AttributeValue`
+- `OperationType`
+
+### Microsoft Windows Security Auditing / EventID: 5140
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `IpAddress`
+- `IpPort`
+- `ShareName`
+
+### Microsoft Windows Security Auditing / EventID: 5145
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ObjectType`
+- `IpAddress`
+- `IpPort`
+- `ShareName`
+- `ShareLocalPath`
+- `RelativeTargetName`
+- `AccessMask`
+- `AccessList`
+- `AccessReason`
+
+### Microsoft Windows Security Auditing / EventID: 5156
+
+- `ProcessID`
+- `Application`
+- `Direction`
+- `SourceAddress`
+- `SourcePort`
+- `DestAddress`
+- `DestPort`
+- `Protocol`
+- `FilterRTID`
+- `LayerName`
+- `LayerRTID`
+
+### Microsoft Windows Security Auditing / EventID: 5157
+
+- `ProcessID`
+- `Application`
+- `Direction`
+- `SourceAddress`
+- `SourcePort`
+- `DestAddress`
+- `DestPort`
+- `Protocol`
+- `FilterRTID`
+- `LayerName`
+- `LayerRTID`
+
+### Microsoft Windows Security Auditing / EventID: 5379
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `TargetName`
+- `Type`
+- `CountOfCredentialsReturned`
+- `ReadOperation`
+- `ReturnCode`
+- `ProcessCreationTime`
+- `ClientProcessId`
+
+### Microsoft Windows Security Auditing / EventID: 5447
+
+- `ProcessId`
+- `UserSid`
+- `UserName`
+- `ProviderKey`
+- `ProviderName`
+- `ChangeType`
+- `FilterKey`
+- `FilterName`
+- `FilterType`
+- `FilterId`
+- `LayerKey`
+- `LayerName`
+- `LayerId`
+- `Weight`
+- `Conditions`
+- `Action`
+- `CalloutKey`
+- `CalloutName`
+
+### Microsoft Windows Security Auditing / EventID: 5449
+
+- `ProcessId`
+- `UserSid`
+- `UserName`
+- `ProviderKey`
+- `ProviderName`
+- `ChangeType`
+- `ProviderContextKey`
+- `ProviderContextName`
+- `ProviderContextType`
+
+### Microsoft Windows Security Auditing / EventID: 6416
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `ClassId`
+- `VendorIds`
+- `CompatibleIds`
+- `LocationInformation`
+
+### Microsoft Windows Security Auditing / EventID: 6423
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+- `DeviceId`
+- `DeviceDescription`
+- `ClassId`
+- `ClassName`
+- `HardwareIds`
+- `CompatibleIds`
+- `LocationInformation`
+
+### Microsoft-Windows-Eventlog / EventID: 1102
+
+- `SubjectUserSid`
+- `SubjectUserName`
+- `SubjectDomainName`
+- `SubjectLogonId`
+
+<!-- event-fields:end -->

@@ -260,6 +260,8 @@ The generic network logs are documented with a page of their own, they set the *
 
   - Split the appendix into one page per log source, in the `appendix-taxonomy` directory
   - Document `category: webserver` with the field names of the Microsoft HTTP Server API
+  - Document `category: proxy` without the claim that it uses the W3C extended log file format
+  - Document the fields that the Windows event sources write with [EVTX-ETW-Resources](https://github.com/nasbench/EVTX-ETW-Resources)
   - Add the log sources that the rules of the SigmaHQ repository use:
     - `product: linux`
     - `product: windows`

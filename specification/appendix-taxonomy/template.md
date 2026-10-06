@@ -78,6 +78,15 @@ The field names of the log source, either as a list or as a table:
 - A table with the columns `Field Name`, `Example Value` and `Comment` when an example value helps to identify the field, like the field names of a process creation event.
 - Leave the section out when the log source uses the field names of another page.
 
+The fields an event source writes for an event are documented per event identifier, in a subsection of the section:
+
+- The `### <event source> / EventID: <identifier>` heading names the source of the fields and the event, `### Microsoft-Windows-Sysmon / EventID: 1`, like the subsections of `## Telemetry`.
+- The subsection holds the payload field names of the event as a list, in the order of the event template.
+- The subsections, with the sentence that names where the field names come from, sit between the `<!-- event-fields:start -->` and the `<!-- event-fields:end -->` markers, so that a tool can refresh them without touching the rest of the section.
+- Event identifiers the source doesn't document are left out of the section.
+
+The field names of the Windows pages come from the manifests and the provider CSVs of [EVTX-ETW-Resources](https://github.com/nasbench/EVTX-ETW-Resources).
+
 ## Page Skeleton
 
 ````markdown

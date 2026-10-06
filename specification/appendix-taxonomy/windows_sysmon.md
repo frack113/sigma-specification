@@ -12,6 +12,10 @@ logsource:
 - [Telemetry](#telemetry)
 - [Points of Attention](#points-of-attention)
 - [Fields](#fields)
+  - [Microsoft-Windows-Sysmon / EventID: 16](#microsoft-windows-sysmon--eventid-16)
+  - [Microsoft-Windows-Sysmon / EventID: 27](#microsoft-windows-sysmon--eventid-27)
+  - [Microsoft-Windows-Sysmon / EventID: 28](#microsoft-windows-sysmon--eventid-28)
+  - [Microsoft-Windows-Sysmon / EventID: 29](#microsoft-windows-sysmon--eventid-29)
 
 <!-- mdformat-toc end -->
 
@@ -35,3 +39,49 @@ Events written by Sysmon.
 The rules of this log source use the following field names:
 
 - `EventID`
+
+<!-- event-fields:start -->
+
+The fields written for the event identifiers of the `## Telemetry` section, from the [EVTX-ETW-Resources](https://github.com/nasbench/EVTX-ETW-Resources) manifests and provider CSVs. Event identifiers the source doesn't document are left out.
+
+### Microsoft-Windows-Sysmon / EventID: 16
+
+- `UtcTime`
+- `Configuration`
+- `ConfigurationFileHash`
+
+### Microsoft-Windows-Sysmon / EventID: 27
+
+- `RuleName`
+- `UtcTime`
+- `ProcessGuid`
+- `ProcessId`
+- `User`
+- `Image`
+- `TargetFilename`
+- `Hashes`
+
+### Microsoft-Windows-Sysmon / EventID: 28
+
+- `RuleName`
+- `UtcTime`
+- `ProcessGuid`
+- `ProcessId`
+- `User`
+- `Image`
+- `TargetFilename`
+- `Hashes`
+- `IsExecutable`
+
+### Microsoft-Windows-Sysmon / EventID: 29
+
+- `RuleName`
+- `UtcTime`
+- `ProcessGuid`
+- `ProcessId`
+- `User`
+- `Image`
+- `TargetFilename`
+- `Hashes`
+
+<!-- event-fields:end -->

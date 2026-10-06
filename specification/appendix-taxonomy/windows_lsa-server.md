@@ -11,6 +11,7 @@ logsource:
 - [Telemetry](#telemetry)
 - [Points of Attention](#points-of-attention)
 - [Fields](#fields)
+  - [LsaSrv / EventID: 300](#lsasrv--eventid-300)
 
 <!-- mdformat-toc end -->
 
@@ -29,3 +30,20 @@ The rules of this log source use the following field names:
 - `EventID`
 - `SidList`
 - `TargetUserSid`
+
+<!-- event-fields:start -->
+
+The fields written for the event identifiers of the `## Telemetry` section, from the [EVTX-ETW-Resources](https://github.com/nasbench/EVTX-ETW-Resources) manifests and provider CSVs. Event identifiers the source doesn't document are left out.
+
+### LsaSrv / EventID: 300
+
+- `TargetUserSid`
+- `TargetUserName`
+- `TargetDomainName`
+- `TargetLogonId`
+- `TargetLogonGuid`
+- `EventOrginal`
+- `EventCountTotal`
+- `SidList`
+
+<!-- event-fields:end -->

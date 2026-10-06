@@ -11,6 +11,7 @@ logsource:
 - [Telemetry](#telemetry)
 - [Points of Attention](#points-of-attention)
 - [Fields](#fields)
+  - [Microsoft-Windows-CAPI2 / EventID: 70](#microsoft-windows-capi2--eventid-70)
 
 <!-- mdformat-toc end -->
 
@@ -27,3 +28,13 @@ logsource:
 The rules of this log source use the following field names:
 
 - `EventID`
+
+<!-- event-fields:start -->
+
+The fields written for the event identifiers of the `## Telemetry` section, from the [EVTX-ETW-Resources](https://github.com/nasbench/EVTX-ETW-Resources) manifests and provider CSVs. Event identifiers the source doesn't document are left out.
+
+### Microsoft-Windows-CAPI2 / EventID: 70
+
+- `EventWriteData`
+
+<!-- event-fields:end -->
