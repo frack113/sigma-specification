@@ -118,4 +118,3 @@ logsource:
 - The page is listed in the table of its folder in the [Sigma Taxonomy](../sigma-appendix-taxonomy.md) file.
 - The change is listed in the history of the [Sigma Taxonomy](../sigma-appendix-taxonomy.md) file, and in `changelog/version-2.1-2.2.md` when it changes the accepted taxonomy.
 - The page is formatted with `mdformat`.
-- The workflow that compares the taxonomy with the rules repository passes. It checks that every log source used by a rule of a folder is documented by a page, and reports the pages that document a log source no rule uses.
